@@ -32,6 +32,7 @@ runs:
           echo "/opt/eda/bin" >> $GITHUB_PATH
           cd work; make gds CELL=$CELL LIB=$LIBRARY
           export
+          echo "::notice::" `cat work/gds/${CELL}.log`
           test -f work/gds/${CELL}.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
