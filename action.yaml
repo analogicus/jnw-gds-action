@@ -38,13 +38,12 @@ runs:
           make gds CELL=$CELL LIB=$LIBRARY
           export
           ls -l gds
-          echo "::notice::" `cat gds/${CELL}.log`
           cat gds/${CELL}.log >> $GITHUB_STEP_SUMMARY
           test -s gds/${CELL}.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
-          name: dist-without-markdown
+          name: gds
           path: |
             work/gds/${{ inputs.cell }}.gds
             work/gds/${{ inputs.cell }}.log
