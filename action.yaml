@@ -18,9 +18,12 @@ inputs:
 runs:
     using: 'composite'
     steps:
-      - name: Checkout tech
+      - name: Checkout dependencies
         shell: bash
-        run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git && git clone https://github.com/wulffern/tech_sky130B.git
+        run: |
+          for url in `cat depends`; do
+            cd ../ && git clone $url
+          done
       - name: Run GDS
         shell: bash
         env:
