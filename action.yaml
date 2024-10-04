@@ -30,12 +30,13 @@ runs:
           export PDK_ROOT=/opt/pdk/share/pdk
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           echo "/opt/eda/bin" >> $GITHUB_PATH
-          cd work; make gds CELL=$CELL LIB=$LIBRARY
+          cd work
+          make gds CELL=$CELL LIB=$LIBRARY
           export
           ls -l
-          echo "::notice::" `cat work/gds/${CELL}.log`
-          cat work/gds/${CELL}.log >> $GITHUB_STEP_SUMMARY
-          test -f work/gds/${CELL}.gds || exit 1;
+          echo "::notice::" `cat gds/${CELL}.log`
+          cat gds/${CELL}.log >> $GITHUB_STEP_SUMMARY
+          test -s gds/${CELL}.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
