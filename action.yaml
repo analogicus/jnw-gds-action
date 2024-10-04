@@ -20,10 +20,11 @@ runs:
       - name: Run GDS
         shell: bash
         run: |
-          cd work; make gds CELL=$CELL LIB=$LIBRARY
+          cd work; make gds CELL=$INPUT_CELL LIB=$INPUT_LIBRARY
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
           name: dist-without-markdown
           path: |
-            work/gds/${CELL}.gds
+            export
+            work/gds/${INPUT_CELL}.gds
