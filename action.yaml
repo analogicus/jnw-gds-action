@@ -26,6 +26,7 @@ runs:
         env:
           CELL: ${{ inputs.cell }}
           LIBRARY: ${{ inputs.library }}
+          PDK_ROOT: "/opt/pdk/share/pdk""
         run: |
           cd work; make gds CELL=$CELL LIB=$LIBRARY
           test -f work/gds/$CELL.gds || exit 1;
