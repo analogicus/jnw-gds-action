@@ -20,7 +20,7 @@ runs:
       - name: Run GDS
         shell: bash
         run: |
-          cd work; make CELL=$CELL LIB=$LIBRARY
+          cd work; make gds CELL=$CELL LIB=$LIBRARY
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
