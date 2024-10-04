@@ -8,9 +8,11 @@ inputs:
   cell:
     description: 'Name of cell'
     required: true
+    type: string
   library:
     description: 'Name of library'
     required: true
+    type: string
 
 runs:
     using: 'composite'
