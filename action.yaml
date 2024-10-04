@@ -14,6 +14,7 @@ inputs:
     required: true
     type: string
 
+
 runs:
     using: 'composite'
     steps:
@@ -22,13 +23,15 @@ runs:
         run: cd ../ && git clone https://github.com/wulffern/tech_sky130A.git && git clone https://github.com/wulffern/tech_sky130B.git
       - name: Run GDS
         shell: bash
+        env:
+          CELL: ${{ inputs.cell }}
+          LIBRARY: ${{ inputs.library }}
         run: |
-          cd work; make gds CELL=$CELL_ARG LIB=$LIBRARY_ARG
-          test -f work/gds/$CELL_ARG.gds || exit 1;
+          cd work; make gds CELL=$CELL LIB=$LIBRARY
+          test -f work/gds/$CELL.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
           name: dist-without-markdown
           path: |
-            export
             work/gds/${{ inputs.cell }}.gds
