@@ -22,9 +22,7 @@ runs:
         shell: bash
         run: |
           python3 -m pip install cicconf
-          export CPATH=$PWD
-          cd ..
-          cicconf --config $CPATH/config.yaml clone --https
+          cicconf --rundir ../ --config $CPATH/config.yaml clone --https
       - name: Run GDS
         shell: bash
         env:
