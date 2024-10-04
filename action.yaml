@@ -23,7 +23,7 @@ runs:
         run: |
           python3 -m pip install cicconf
           cd ..
-          cicconf --config $GITHUB_ACTION_PATH clone --https
+          cicconf --config $GITHUB_ACTION_PATH/config.yaml clone --https
       - name: Run GDS
         shell: bash
         env:
