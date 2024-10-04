@@ -4,13 +4,14 @@ branding:
   color: purple
   icon: layers
 
-input:
+inputs:
   cell:
     description: 'Name of cell'
     required: true
   library:
     description: 'Name of library'
     required: true
+
 runs:
     using: 'composite'
     steps:
@@ -20,7 +21,7 @@ runs:
       - name: Run GDS
         shell: bash
         run: |
-          cd work; make gds CELL=${{ inputs.cell }} LIB=${{ inputs.library }}
+          cd work; make gds CELL=$CELL LIB=$LIBRARY
           test -f work/gds/${{ inputs.cell }}.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
