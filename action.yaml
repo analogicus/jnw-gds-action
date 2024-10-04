@@ -22,8 +22,9 @@ runs:
         shell: bash
         run: |
           for url in `cat depends`; do
-            cd ../ && git clone $url
+            cd ../ && git clone $url && cd -
           done
+          echo $PWD
       - name: Run GDS
         shell: bash
         env:
