@@ -33,7 +33,7 @@ runs:
           cd work
           make gds CELL=$CELL LIB=$LIBRARY
           export
-          tree
+          ls -l gds
           echo "::notice::" `cat gds/${CELL}.log`
           cat gds/${CELL}.log >> $GITHUB_STEP_SUMMARY
           test -s gds/${CELL}.gds || exit 1;
