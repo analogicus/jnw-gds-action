@@ -21,10 +21,9 @@ runs:
       - name: Checkout dependencies
         shell: bash
         run: |
-          for url in `cat depends`; do
-            cd ../ && git clone $url && cd -
-          done
-          echo $PWD
+          python3 -m pip install cicconf
+          cd ..
+          cicconf --config $GITHUB_ACTION_PATH clone --https
       - name: Run GDS
         shell: bash
         env:
