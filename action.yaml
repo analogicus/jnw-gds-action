@@ -23,8 +23,8 @@ runs:
       - name: Run GDS
         shell: bash
         run: |
-          cd work; make gds CELL=$CELL LIB=$LIBRARY
-          test -f work/gds/${{ inputs.cell }}.gds || exit 1;
+          cd work; make gds CELL=$CELL_ARG LIB=$LIBRARY_ARG
+          test -f work/gds/$CELL_ARG.gds || exit 1;
       - name: Archive GDS
         uses: actions/upload-artifact@v4
         with:
